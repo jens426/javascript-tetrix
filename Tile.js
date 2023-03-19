@@ -1,11 +1,38 @@
 class Tile {
-  constructor(x, y, x2, y2, name, canvas) {
+  constructor(x, y, x2, y2,leftTile,rightTile,tileUnder, name, canvas) {
     this.x = x;
+    this.leftTile = leftTile;
+    this.rightTile = rightTile;
+    this.tileUnder = tileUnder;
     this.y = y;
     this.x2 = x2;
     this.y2 = y2;
     this.name = name;
     this.canvas = canvas;
+  }
+
+  getTileUnder(){
+    return this.tileUnder;
+  }
+
+  setTileUnder(tileUnder){
+    this.tileUnder = tileUnder;
+  }
+
+  getLeftTile(){
+    return this.leftTile;
+  }
+
+  getRightTile(){
+    return this.rightTile;
+  }
+
+  setRightTile(rightTile){
+    this.rightTile = rightTile;
+  }
+
+  setLeftTile(leftTile){
+    this.leftTile = leftTile;
   }
 
   getName() {
