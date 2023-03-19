@@ -37,7 +37,6 @@ function drawEverThing() {
           350 + size,
           150 + sizeb,
           35,
-          35,
           null,
           null,
           null,
