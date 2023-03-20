@@ -1,3 +1,5 @@
+var allTilesArray = new Array();
+
 function sayHelloWorld() {
   console.log("hello world");
   return null;
@@ -7,7 +9,6 @@ function sayHelloWorld() {
 function drawEverThing() {
   //drawNext();
   var c = document.getElementById("myCanvas");
-  var allTilesArray = new Array();
   const name = [
     "a",
     "b",
@@ -31,7 +32,7 @@ function drawEverThing() {
   var nextNameInArray = 0;
   for (var ii = 1; ii < 17; ii++) {
     var size = 0;
-    for (var i = 1; i < 10; i++) {
+    for (var i = 1; i < 11; i++) {
       allTilesArray.push(
         new Tile(
           350 + size,
@@ -49,44 +50,60 @@ function drawEverThing() {
     nextNameInArray = nextNameInArray + 1;
     sizeb = sizeb + 35;
   }
-// set pointer to all left tiles
-var i = 0;
+  // set pointer to all left tiles
+  var i = 0;
+  var roughLength = 0;
   for (const element of allTilesArray) {
-    if ((i == 0) || (i == 9) || (i == 18)|| (i == 27)|| (i == 36)|| (i == 45)|| (i == 54)|| (i == 63)|| (i == 72)|| (i == 81)|| (i == 90)|| (i == 99)|| (i == 108)|| (i == 117)|| (i == 126)|| (i == 135)) element.setLeftTile(null); else 
-        element.setLeftTile(allTilesArray[i-1]);
-    
-    i = i +1;
+    if (roughLength == 10) {
+      element.setLeftTile(null);
+      roughLength = 0;
+    } else {
+      element.setLeftTile(allTilesArray[i - 1]);
+    }
+    i = i + 1;
+    roughLength = roughLength + 1;
   }
+  allTilesArray[0].setLeftTile(null);
 
-// set pointer to all right tiles
-var i = 0;
+  // set pointer to all right tiles
+  var i = 0;
+  var roughLength = 1;
   for (const element of allTilesArray) {
-    if ((i == 8) || (i == 17) || (i == i+8)|| (i == i+16)|| (i == i+24)|| (i == i+32)|| (i == i+40)|| (i == i+48)|| (i == i+56)|| (i == i+64)|| (i == i+72)|| (i == i+80)|| (i == i+88)|| (i == i+96)|| (i == i+104)|| (i == i+112)) element.setLeftTile(null); else 
-        element.setRightTile(allTilesArray[i+1]);
-    
-    i = i +1;
+    if (roughLength == 10) {
+      element.setRightTile(null);
+      roughLength = 0;
+    } else {
+      element.setRightTile(allTilesArray[i + 1]);
+    }
+    i = i + 1;
+    roughLength = roughLength + 1;
   }
 
   // set pointer to all tileunder tiles
-var i = 0;
-for (const element of allTilesArray) {
-  if (i > 134) element.setTileUnder(null); else 
-      element.setTileUnder(allTilesArray[i+9]);
-  
-  i = i +1;
-}
+  var i = 0;
+  for (const element of allTilesArray) {
+    if (i > 149) element.setTileUnder(null);
+    else element.setTileUnder(allTilesArray[i + 10]);
+
+    i = i + 1;
+  }
 
   for (const element of allTilesArray) {
     element.draw();
   }
-/*
+
+  // print name of pointer af all tiles to the right
+  /*
   var i = 0;
   for (const element of allTilesArray) {
-    console.log(element.getName());
-    temp = element.getTileUnder();
-    if (temp == null) console.log("under null"); else
-    console.log("under "+element.getTileUnder().getName());
-    i = i +1;
+    //console.log(element.getName());
+    temp = element.getRightTile();
+    if (temp == null) console.log(element.getName() + " right null");
+    else
+      console.log(
+        element.getName() + "right " + element.getRightTile().getName()
+      );
+    i = i + 1;
   }
 */
   // print all name of tiels
@@ -100,3 +117,43 @@ for (const element of allTilesArray) {
 
 drawEverThing();
 
+const test = new Piece("GREEN", 4, allTilesArray);
+test.placePiece();
+test.moveFourleft();
+test.moveFourleft();
+
+test.moveFourleft();
+test.moveFourleft();
+
+const test2 = new Piece("RED", 4, allTilesArray);
+test2.placePiece();
+test2.moveFourleft();
+test2.moveFourleft();
+test2.moveFourleft();
+test2.moveFourleft();
+test2.moveFourleft();
+test2.moveFourleft();
+test2.moveFourleft();
+test2.moveFourleft();
+test2.moveFourDown();
+test2.moveFourleft();
+test2.moveFourDown();
+test2.moveFourleft();
+test2.moveFourDown();
+test2.moveFourleft();
+
+test.moveFourDown();
+test.moveFourDown();
+test.moveFourleft();
+test2.moveFourDown();
+test2.moveFourDown();
+test2.moveFourDown();
+test2.moveFourDown();
+test2.moveFourDown();
+test2.moveFourDown();
+test2.moveFourDown();
+test2.moveFourDown();
+test2.moveFourDown();
+test2.moveFourDown();
+test2.moveFourDown();
+test2.moveFourDown();
