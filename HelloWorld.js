@@ -116,73 +116,36 @@ function drawEverThing() {
 // import of class is done in html
 
 drawEverThing();
+const test1 = new Piece("red", 4, allTilesArray);
+test1.placePiece();
 
-const test = new Piece("GREEN", 4, allTilesArray);
-test.placePiece();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourRight();
-test.moveFourRight();
-test.moveFourRight();
-test.moveFourRight();
-test.moveFourRight();
-test.moveFourRight();
-test.moveFourRight();
-test.moveFourRight();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourleft();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourDown();
-test.moveFourRight();
-test.moveFourRight();
+$(document).ready(function () {
+  $("body").keydown(function (e) {
+    if (e.which == 40) {
+      // down
+      test1.moveFourDown();
+    }
+    if (e.which == 83) {
+      // s key
+      test1.moveFourDown();
+    }
 
+    if (e.which == 39) {
+      // right
+      test1.moveFourRight();
+    }
+    if (e.which == 68) {
+      // d key
+      test1.moveFourRight();
+    }
 
-const test2 = new Piece("red", 4, allTilesArray);
-test2.placePiece();
-test2.moveFourleft();
-test2.moveFourleft();
-test2.moveFourleft();
-test2.moveFourleft();
-test2.moveFourRight();
-test2.moveFourRight();
-test2.moveFourRight();
-test2.moveFourRight();
-test2.moveFourRight();
-test2.moveFourRight();
-test2.moveFourRight();
-test2.moveFourRight();
-test2.moveFourRight();
-
-
-
-
-
-
-
+    if (e.which == 37) {
+      // left
+      test1.moveFourLeft();
+    }
+    if (e.which == 65) {
+      // a key
+      test1.moveFourLeft();
+    }
+  });
+});

@@ -3,7 +3,6 @@ class Piece {
 
   // 1 is left side that has to be check for colliton
   TileFourLeftSide = [1, 0, 1, 0];
-
   TileFourRightSide = [0, 1, 0, 1];
   TileFourBottom = [0, 0, 1, 1];
 
@@ -58,12 +57,11 @@ class Piece {
     }
   }
 
-  moveFourleft() {
+  moveFourLeft() {
     this.moveLeft(this.TileFourPosition, this.TileFourLeftSide);
   }
 
   moveRight(TilePosition, TileRight) {
-
     if (this.stopMoving == false) {
       let isAllowToMove = true;
 
@@ -118,7 +116,6 @@ class Piece {
   }
 
   moveLeft(TilePosition, TileLeft) {
-
     if (this.stopMoving == false) {
       let isAllowToMove = true;
 
@@ -172,13 +169,9 @@ class Piece {
     }
   }
 
-  
   moveFourRight() {
     this.moveRight(this.TileFourPosition, this.TileFourRightSide);
-
   }
-
-
 
   collitionDetectionDown(TilePosition, TileBottom) {
     let ArrayToCheck = [];
