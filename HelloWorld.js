@@ -116,7 +116,7 @@ function drawEverThing() {
 // import of class is done in html
 
 drawEverThing();
-const test1 = new Piece("red", 4, allTilesArray);
+let test1 = new Piece("red", 4, allTilesArray);
 test1.placePiece();
 
 $(document).ready(function () {
@@ -146,6 +146,12 @@ $(document).ready(function () {
     if (e.which == 65) {
       // a key
       test1.moveFourLeft();
+    }
+
+    if (test1.getStopMoving()) {
+      // new piece
+      console.log();
+      test1.placePiece();
     }
   });
 });

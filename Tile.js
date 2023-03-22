@@ -54,7 +54,6 @@ class Tile {
   }
 
   draw(color) {
-    var ctx = this.canvas.getContext("2d");
     ctx.beginPath();
     ctx.rect(this.x, this.y, this.size, this.size);
     ctx.stroke();

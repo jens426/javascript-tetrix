@@ -1,5 +1,5 @@
 class Piece {
-  TileFourPosition = [4, 5, 14, 15];
+  TileFourPosition = [];
 
   // 1 is left side that has to be check for colliton
   TileFourLeftSide = [1, 0, 1, 0];
@@ -18,6 +18,9 @@ class Piece {
   }
 
   placePiece() {
+    this.stopMoving = false;
+    this.TileFourPosition = [4, 5, 14, 15];
+    //TileFourPosition = [4, 5, 14, 15];
     if (this.shape == 4) {
       for (const element of this.TileFourPosition) {
         var temp = this.allTiles[element];
@@ -192,7 +195,6 @@ class Piece {
           this.stopMoving = true;
         } else if (this.allTiles[element].getTileUnder().getIsSet() == true) {
           //other piece collition down
-
           this.stopMoving = true;
         }
       }
