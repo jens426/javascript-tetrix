@@ -1,10 +1,20 @@
 class Piece {
-  TileFourPosition = [];
+  TilePosition = [];
+  TileLeftSide = [];
+  TileRightSide = [];
+  TileBottom = [];
 
-  // 1 is left side that has to be check for colliton
+  TileFourPosition = [];
+  // 1 is side that has to be check for colliton
   TileFourLeftSide = [1, 0, 1, 0];
   TileFourRightSide = [0, 1, 0, 1];
   TileFourBottom = [0, 0, 1, 1];
+
+  TileOnePosition = [];
+  // 1 is side that has to be check for colliton
+  TileOneLeftSide = [1, 1, 1, 1];
+  TileOneRightSide = [1, 1, 1, 1];
+  TileOneBottom = [0, 0, 0, 1];
 
   stopMoving = false;
   constructor(color, shape, allTiles) {
@@ -20,39 +30,54 @@ class Piece {
   placePiece() {
     this.stopMoving = false;
     this.TileFourPosition = [4, 5, 14, 15];
-    //TileFourPosition = [4, 5, 14, 15];
+    this.TileOnePosition = [5, 15, 25, 35];
+
     if (this.shape == 4) {
-      for (const element of this.TileFourPosition) {
-        var temp = this.allTiles[element];
-        this.pieceFour(temp);
-
-        temp.setPiece(this.color);
-      }
-
-      //temp.setEmpty();
+      this.TilePosition = this.TileFourPosition;
+      this.TileLeftSide = this.TileFourLeftSide;
+      this.TileRightSide = this.TileFourRightSide;
+      this.TileBottom = this.TileFourBottom;
     }
+
+    if (this.shape == 1) {
+      this.TilePosition = this.TileOnePosition;
+      this.TileLeftSide = this.TileOneLeftSide;
+      this.TileRightSide = this.TileOneRightSide;
+      this.TileBottom = this.TileOneBottom;
+    }
+
+    //TileFourPosition = [4, 5, 14, 15];
+
+    for (const element of this.TilePosition) {
+      var temp = this.allTiles[element];
+      this.pieceFour(temp);
+
+      temp.setPiece(this.color);
+    }
+
+    //temp.setEmpty();
   }
 
   pieceFour(position) {
     return false;
   }
 
-  moveFourDown() {
-    this.collitionDetectionDown(this.TileFourPosition, this.TileFourBottom);
+  movePieceDown() {
+    this.collitionDetectionDown(this.TilePosition, this.TileBottom);
 
     if (this.stopMoving == false) {
-      for (const element of this.TileFourPosition) {
+      for (const element of this.TilePosition) {
         var temp = this.allTiles[element];
         this.pieceFour(temp);
         temp.setEmpty();
       }
-      this.TileFourPosition = [
-        this.TileFourPosition[0] + 10,
-        this.TileFourPosition[1] + 10,
-        this.TileFourPosition[2] + 10,
-        this.TileFourPosition[3] + 10,
+      this.TilePosition = [
+        this.TilePosition[0] + 10,
+        this.TilePosition[1] + 10,
+        this.TilePosition[2] + 10,
+        this.TilePosition[3] + 10,
       ];
-      for (const element of this.TileFourPosition) {
+      for (const element of this.TilePosition) {
         var temp = this.allTiles[element];
         this.pieceFour(temp);
         temp.setPiece(this.color);
@@ -60,8 +85,8 @@ class Piece {
     }
   }
 
-  moveFourLeft() {
-    this.moveLeft(this.TileFourPosition, this.TileFourLeftSide);
+  movePieceLeft() {
+    this.moveLeft(this.TilePosition, this.TileLeftSide);
   }
 
   moveRight(TilePosition, TileRight) {
@@ -172,8 +197,8 @@ class Piece {
     }
   }
 
-  moveFourRight() {
-    this.moveRight(this.TileFourPosition, this.TileFourRightSide);
+  movePieceRight() {
+    this.moveRight(this.TilePosition, this.TileRightSide);
   }
 
   collitionDetectionDown(TilePosition, TileBottom) {
@@ -201,15 +226,15 @@ class Piece {
     }
   }
 
-  rotateFourLeft(TileFourPosition) {
+  rotateLeft(TilePosition) {
     if (this.stopMoving == false) {
-      this.position = position;
+      this.position = this.position;
     }
   }
 
-  rotateFourRight(TileFourPosition) {
+  rotateRight(TilePosition) {
     if (this.stopMoving == false) {
-      this.TileFourPosition = TileFourPosition;
+      this.TilePosition = TilePosition;
     }
   }
 }

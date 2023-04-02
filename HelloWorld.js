@@ -116,42 +116,45 @@ function drawEverThing() {
 // import of class is done in html
 
 drawEverThing();
-let test1 = new Piece("red", 4, allTilesArray);
-test1.placePiece();
 
+let test2 = new Piece("red", 1, allTilesArray);
+test2.placePiece();
+
+/*let test1 = new Piece("red", 4, allTilesArray);
+test1.placePiece();
+*/
 $(document).ready(function () {
   $("body").keydown(function (e) {
     if (e.which == 40) {
       // down
-      test1.moveFourDown();
+      test2.movePieceDown();
     }
     if (e.which == 83) {
       // s key
-      test1.moveFourDown();
+      test2.movePieceDown();
     }
 
     if (e.which == 39) {
       // right
-      test1.moveFourRight();
+      test2.movePieceRight();
     }
     if (e.which == 68) {
       // d key
-      test1.moveFourRight();
+      test2.movePieceRight();
     }
 
     if (e.which == 37) {
       // left
-      test1.moveFourLeft();
+      test2.movePieceLeft();
     }
     if (e.which == 65) {
       // a key
-      test1.moveFourLeft();
+      test2.movePieceLeft();
     }
 
-    if (test1.getStopMoving()) {
+    if (test2.getStopMoving()) {
       // new piece
-      console.log();
-      test1.placePiece();
+      test2.placePiece();
     }
   });
 });
